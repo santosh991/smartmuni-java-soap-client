@@ -7,12 +7,9 @@ import java.util.List;
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import com.smartmuni.services.soap.DeleteResult;
-import com.smartmuni.services.soap.SmartmuniService;
 import com.smartmuni.services.soap.fault.UnexpectedErrorFault;
 
 public class DeleteBondSample extends BaseSample {
-
-	private SmartmuniService smartmuniService;
 
 	public static void main(String[] args) throws DatatypeConfigurationException, ParseException {
 		
