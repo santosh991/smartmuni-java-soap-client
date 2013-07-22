@@ -1,0 +1,1269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SmartmuniService" targetNamespace="http://services.smartmuni.com/soap" xmlns:ns1="http://services.smartmuni.com/soap/fault" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://services.smartmuni.com/soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema targetNamespace="http://services.smartmuni.com/soap/smartobject" version="1.0" xmlns:tns="http://services.smartmuni.com/soap/smartobject" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:complexType abstract="true" name="SmartObject">
+    <xs:complexContent>
+      <xs:extension base="tns:SimpleObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="createdDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="smartObjectType" type="tns:SmartObjectType"/>
+          <xs:element minOccurs="0" name="updatedDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="SimpleObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="SmartObjectType">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="smartObjectMetadata" type="tns:SmartObjectMetadata"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="SmartObjectMetadata">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="buttons" nillable="true" type="tns:Button"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="childRelationships" nillable="true" type="tns:SmartRelationship"/>
+          <xs:element minOccurs="0" name="creatable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="deletable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="fields" nillable="true" type="tns:SmartField"/>
+          <xs:element minOccurs="0" name="label" type="xs:string"/>
+          <xs:element minOccurs="0" name="pluralLabel" type="xs:string"/>
+          <xs:element minOccurs="0" name="searchable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="smallIcon" type="xs:string"/>
+          <xs:element minOccurs="0" name="updatable" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="urlDetail" type="xs:string"/>
+          <xs:element minOccurs="0" name="urlEdit" type="xs:string"/>
+          <xs:element minOccurs="0" name="urlNew" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Button">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="action" type="xs:string"/>
+          <xs:element minOccurs="0" name="actionType" type="tns:ActionType"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="label" type="xs:string"/>
+          <xs:element minOccurs="0" name="url" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="SmartRelationship">
+    <xs:complexContent>
+      <xs:extension base="tns:SimpleObject">
+        <xs:sequence>
+          <xs:element name="cascadeDelete" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="childSmartObject" type="xs:string"/>
+          <xs:element minOccurs="0" name="field" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="smartObjectMetadata" type="tns:SmartObjectMetadata"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="SmartField">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="decimalPlaces" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="displayFormula" type="xs:string"/>
+          <xs:element minOccurs="0" name="label" type="xs:string"/>
+          <xs:element minOccurs="0" name="length" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="referenceTo" type="xs:string"/>
+          <xs:element minOccurs="0" name="required" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="sequence" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="smartObjectMetadata" type="tns:SmartObjectMetadata"/>
+          <xs:element minOccurs="0" name="summaryField" type="tns:SmartField"/>
+          <xs:element minOccurs="0" name="summaryType" type="tns:SummaryType"/>
+          <xs:element minOccurs="0" name="type" type="tns:FieldType"/>
+          <xs:element minOccurs="0" name="updatable" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Task">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="assignedTo" type="tns:User"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="tns:District"/>
+          <xs:element minOccurs="0" name="dueDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="priority" type="tns:TaskPriorityType"/>
+          <xs:element minOccurs="0" name="status" type="tns:TaskStatusType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="User">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="lastAccess" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="mailingAddress" type="tns:Address"/>
+          <xs:element minOccurs="0" name="middleName" type="xs:string"/>
+          <xs:element minOccurs="0" name="phone" type="xs:string"/>
+          <xs:element minOccurs="0" name="profile" type="tns:Profile"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+          <xs:element minOccurs="0" name="userRole" type="tns:UserRole"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Address">
+    <xs:complexContent>
+      <xs:extension base="tns:SimpleObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="city" type="xs:string"/>
+          <xs:element minOccurs="0" name="direction" type="xs:string"/>
+          <xs:element minOccurs="0" name="number" type="xs:string"/>
+          <xs:element minOccurs="0" name="state" type="xs:string"/>
+          <xs:element minOccurs="0" name="street" type="xs:string"/>
+          <xs:element minOccurs="0" name="suffix" type="xs:string"/>
+          <xs:element minOccurs="0" name="unit" type="xs:string"/>
+          <xs:element minOccurs="0" name="zipCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Profile">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="UserRole">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="District">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="administrationAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="administrationFeeType" type="tns:AdministrationFeeType"/>
+          <xs:element minOccurs="0" name="agency" type="tns:Agency"/>
+          <xs:element minOccurs="0" name="cutoffDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="cutoffType" type="tns:CutoffType"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="fund" type="tns:Fund"/>
+          <xs:element minOccurs="0" name="maximumTaxRounding" type="tns:RoundingType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Agency">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="county" type="tns:County"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="fax" type="xs:string"/>
+          <xs:element minOccurs="0" name="mailingAddress" type="tns:Address"/>
+          <xs:element minOccurs="0" name="phone" type="xs:string"/>
+          <xs:element minOccurs="0" name="webSite" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="County">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="fax" type="xs:string"/>
+          <xs:element minOccurs="0" name="levyRounding" type="tns:LevyAmountRoundingType"/>
+          <xs:element minOccurs="0" name="mailingAddress" type="tns:Address"/>
+          <xs:element minOccurs="0" name="phone" type="xs:string"/>
+          <xs:element minOccurs="0" name="taxParcelNumberFormat" type="xs:string"/>
+          <xs:element minOccurs="0" name="webSite" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Fund">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bond" type="tns:Bond"/>
+          <xs:element minOccurs="0" name="county" type="tns:County"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="type" type="tns:FundType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Bond">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="capitalizedInterestAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="costOfIssuance" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="couponRate" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="issueDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="outstandingPrincipalAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="projectName" type="xs:string"/>
+          <xs:element minOccurs="0" name="term" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="type" type="tns:BondType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Levy">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="administrativeAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="backupLevyAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="tns:District"/>
+          <xs:element minOccurs="0" name="expectedMaximumLevyAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="fiscalYear" type="tns:FiscalYear"/>
+          <xs:element minOccurs="0" name="interestAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="levyAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="numberOfParcels" type="xs:long"/>
+          <xs:element minOccurs="0" name="principalAmount" type="xs:decimal"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="properties" nillable="true" type="tns:Property"/>
+          <xs:element minOccurs="0" name="reserveAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="specialTaxRequirementAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="statusType" type="tns:StatusType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="FiscalYear">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="calendarYear" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Property">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="administrativeAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="backupLevyAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="block" type="xs:string"/>
+          <xs:element minOccurs="0" name="building" type="xs:string"/>
+          <xs:element minOccurs="0" name="buildingSquareFeet" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="certificateOfOccupancyDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="density" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="escrowCloseDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="expectedMaximumLevyAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="expectedMaximumLevyRate" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="interestAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="landUse" type="xs:string"/>
+          <xs:element minOccurs="0" name="levy" type="tns:Levy"/>
+          <xs:element minOccurs="0" name="levyAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="levyClass" type="tns:LevyClass"/>
+          <xs:element minOccurs="0" name="levyRate" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="lot" type="xs:string"/>
+          <xs:element minOccurs="0" name="numberOfPermits" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="numberOfUnits" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
+          <xs:element minOccurs="0" name="parcelMap" type="xs:string"/>
+          <xs:element minOccurs="0" name="parcelNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="permitDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="planArea" type="xs:string"/>
+          <xs:element minOccurs="0" name="prepayPercent" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="prepayYear" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="principalAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="reserveAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="subsidy" type="xs:string"/>
+          <xs:element minOccurs="0" name="subsidyAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="taxableLandArea" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="totalLandArea" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="tract" type="xs:string"/>
+          <xs:element minOccurs="0" name="tractDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="tractPhase" type="xs:string"/>
+          <xs:element minOccurs="0" name="unit" type="xs:string"/>
+          <xs:element minOccurs="0" name="waterUsage" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="zone" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="LevyClass">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="tns:District"/>
+          <xs:element minOccurs="0" name="expectedMaximumLevyRate" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="levyRate" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="rule" type="tns:Rule"/>
+          <xs:element minOccurs="0" name="taxLevyBasisType" type="tns:TaxLevyBasisType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Rule">
+    <xs:complexContent>
+      <xs:extension base="tns:SimpleObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="xml" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Parcel">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="checkDigit" type="xs:string"/>
+          <xs:element minOccurs="0" name="county" type="tns:County"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="situsAddress" type="tns:Address"/>
+          <xs:element minOccurs="0" name="taxRateArea" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="LienDebtSchedule">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="interestAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="lien" type="tns:Lien"/>
+          <xs:element minOccurs="0" name="paymentAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="principalAmount" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Lien">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="bond" type="tns:Bond"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="tns:District"/>
+          <xs:element minOccurs="0" name="lienDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
+          <xs:element minOccurs="0" name="rate" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="term" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="type" type="tns:LienType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="TaxBill">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="billDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dueDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="fiscalYear" type="tns:FiscalYear"/>
+          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="payments" nillable="true" type="tns:Payment"/>
+          <xs:element minOccurs="0" name="status" type="tns:TaxBillStatusType"/>
+          <xs:element minOccurs="0" name="type" type="tns:TaxBillType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Payment">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="checkNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="fund" type="tns:Fund"/>
+          <xs:element minOccurs="0" name="installment" type="tns:InstallmentType"/>
+          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
+          <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="taxBill" type="tns:TaxBill"/>
+          <xs:element minOccurs="0" name="type" type="tns:PaymentType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Report">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="body" type="xs:base64Binary"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="folder" type="tns:Folder"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Folder">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="type" type="tns:FolderType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Permit">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="block" type="xs:string"/>
+          <xs:element minOccurs="0" name="building" type="xs:string"/>
+          <xs:element minOccurs="0" name="buildingSquareFeet" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="certificateOfOccupancyDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="classCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="county" type="tns:County"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="lot" type="xs:string"/>
+          <xs:element minOccurs="0" name="numberOfUnits" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="owner" type="tns:Owner"/>
+          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
+          <xs:element minOccurs="0" name="parcelMap" type="xs:string"/>
+          <xs:element minOccurs="0" name="permitDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="scopeOfWork" type="xs:string"/>
+          <xs:element minOccurs="0" name="situsAddress" type="tns:Address"/>
+          <xs:element minOccurs="0" name="statusType" type="tns:PermitStatusType"/>
+          <xs:element minOccurs="0" name="taxParcelNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="tract" type="xs:string"/>
+          <xs:element minOccurs="0" name="tractPhase" type="xs:string"/>
+          <xs:element minOccurs="0" name="unit" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Owner">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="mailingAddress" type="tns:Address"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="LevyPermit">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="applied" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="applyDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="levy" type="tns:Levy"/>
+          <xs:element minOccurs="0" name="permit" type="tns:Permit"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Contract">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="agency" type="tns:Agency"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="TaxRate">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="levyClass" type="tns:LevyClass"/>
+          <xs:element minOccurs="0" name="rateAndMethodStep" type="tns:RateAndMethodStep"/>
+          <xs:element minOccurs="0" name="taxRateType" type="tns:TaxRateType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="RateAndMethodStep">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="tns:District"/>
+          <xs:element minOccurs="0" name="levyAmount" type="xs:decimal"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="taxRates" nillable="true" type="tns:TaxRate"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="TaxBillItem">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="taxBill" type="tns:TaxBill"/>
+          <xs:element minOccurs="0" name="type" type="tns:TaxBillItemType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Opportunity">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="agency" type="tns:Agency"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Escalator">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="endFiscalYear" type="tns:FiscalYear"/>
+          <xs:element minOccurs="0" name="levyClass" type="tns:LevyClass"/>
+          <xs:element minOccurs="0" name="startFiscalYear" type="tns:FiscalYear"/>
+          <xs:element minOccurs="0" name="type" type="tns:EscalatorType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="OwnerParcel">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fiscalYear" type="tns:FiscalYear"/>
+          <xs:element minOccurs="0" name="owner" type="tns:Owner"/>
+          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="BondDebtSchedule">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bond" type="tns:Bond"/>
+          <xs:element minOccurs="0" name="interestAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="paymentAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="principalAmount" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Project">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Contact">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="agency" type="tns:Agency"/>
+          <xs:element minOccurs="0" name="businessFax" type="xs:string"/>
+          <xs:element minOccurs="0" name="businessPhone" type="xs:string"/>
+          <xs:element minOccurs="0" name="company" type="xs:string"/>
+          <xs:element minOccurs="0" name="department" type="xs:string"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="jobTitle" type="xs:string"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="mailingAddress" type="tns:Address"/>
+          <xs:element minOccurs="0" name="middleName" type="xs:string"/>
+          <xs:element minOccurs="0" name="mobilePhone" type="xs:string"/>
+          <xs:element minOccurs="0" name="phone" type="xs:string"/>
+          <xs:element minOccurs="0" name="suffix" type="xs:string"/>
+          <xs:element minOccurs="0" name="title" type="xs:string"/>
+          <xs:element minOccurs="0" name="webSite" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="TaxRateArea">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="MaxTax">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="tns:District"/>
+          <xs:element minOccurs="0" name="fiscalYear" type="tns:FiscalYear"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:simpleType name="ActionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DETAIL_LINK"/>
+      <xs:enumeration value="DETAIL_BUTTON"/>
+      <xs:enumeration value="LIST_BUTTON"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="SummaryType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="COUNT"/>
+      <xs:enumeration value="MIN"/>
+      <xs:enumeration value="MAX"/>
+      <xs:enumeration value="SUM"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="FieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Boolean"/>
+      <xs:enumeration value="Text"/>
+      <xs:enumeration value="TextArea"/>
+      <xs:enumeration value="Currency"/>
+      <xs:enumeration value="Number"/>
+      <xs:enumeration value="Percent"/>
+      <xs:enumeration value="Date"/>
+      <xs:enumeration value="DateTime"/>
+      <xs:enumeration value="Lookup"/>
+      <xs:enumeration value="Address"/>
+      <xs:enumeration value="MasterDetail"/>
+      <xs:enumeration value="Email"/>
+      <xs:enumeration value="URL"/>
+      <xs:enumeration value="Picklist"/>
+      <xs:enumeration value="Rule"/>
+      <xs:enumeration value="Phone"/>
+      <xs:enumeration value="RollUp"/>
+      <xs:enumeration value="Calculated"/>
+      <xs:enumeration value="Bytes"/>
+      <xs:enumeration value="List"/>
+      <xs:enumeration value="ObjectType"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="AdministrationFeeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="FIXED"/>
+      <xs:enumeration value="PERCENT"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="LevyAmountRoundingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="ROUND_EVEN_PENNY"/>
+      <xs:enumeration value="ROUND_WHOLE_DOLLAR"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="CutoffType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="PERMIT_DATE"/>
+      <xs:enumeration value="CO_DATE"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="BondType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNDETERMINED"/>
+      <xs:enumeration value="NINETEEN_ELEVIN_ACT"/>
+      <xs:enumeration value="NINETEEN_FIFTEEN_ACT"/>
+      <xs:enumeration value="BOND_ANTICIPATION_NOTE"/>
+      <xs:enumeration value="MARKS_ROOS"/>
+      <xs:enumeration value="MELLO_ROOS"/>
+      <xs:enumeration value="REVENUE"/>
+      <xs:enumeration value="TAX_ALLOCATION_BOND"/>
+      <xs:enumeration value="TAX_ALLOCATION_NOTE"/>
+      <xs:enumeration value="TAX_REVENUE_ANTICIPATION_NOTE"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="FundType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DEBT_SERVICE_FUND"/>
+      <xs:enumeration value="DEBT_SERVICE_RESERVE_FUND"/>
+      <xs:enumeration value="MANDATORY_REDEMPTION_FUND"/>
+      <xs:enumeration value="OPERATIONS_AND_MAINTENANCE_FUND"/>
+      <xs:enumeration value="RENEWAL_AND_REPLACEMENT_FUND"/>
+      <xs:enumeration value="RESERVE_MAINTENANCE_FUND"/>
+      <xs:enumeration value="RESERVE_FUND"/>
+      <xs:enumeration value="SINKING_FUND"/>
+      <xs:enumeration value="SURPLUS_FUND"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="RoundingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="ROUND_UP"/>
+      <xs:enumeration value="ROUND_DOWN"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="TaskPriorityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LOW"/>
+      <xs:enumeration value="NORMAL"/>
+      <xs:enumeration value="HIGH"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="TaskStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOT_STARTED"/>
+      <xs:enumeration value="IN_PROGRESS"/>
+      <xs:enumeration value="COMPLETE"/>
+      <xs:enumeration value="WAITING"/>
+      <xs:enumeration value="DEFERRED"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="TaxLevyBasisType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BUILDING_SQ_FEET"/>
+      <xs:enumeration value="NUMBER_OF_UNITS"/>
+      <xs:enumeration value="TAXABLE_ACRES"/>
+      <xs:enumeration value="PER_PARCEL"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="StatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TESTING"/>
+      <xs:enumeration value="IN_PROGRESS"/>
+      <xs:enumeration value="FINALIZED"/>
+      <xs:enumeration value="SUBMITTED"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="LienType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SPECIAL_ASSESSMENT_LIEN"/>
+      <xs:enumeration value="TAX_LIEN"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="InstallmentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FIRST"/>
+      <xs:enumeration value="SECOND"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="PaymentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="REGULAR"/>
+      <xs:enumeration value="TAXSALE"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="TaxBillStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PAID"/>
+      <xs:enumeration value="PAID_FIRST"/>
+      <xs:enumeration value="PAID_PARTIAL"/>
+      <xs:enumeration value="UNPAID"/>
+      <xs:enumeration value="TAX_SALE"/>
+      <xs:enumeration value="DELINQUENT"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="TaxBillType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SECURED"/>
+      <xs:enumeration value="SECURED_SUPPLEMENTAL"/>
+      <xs:enumeration value="UNSECURED"/>
+      <xs:enumeration value="UNSECURED_SUPPLEMENTAL"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="FolderType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DOCUMENTS"/>
+      <xs:enumeration value="EMAIL_TEMPLATES"/>
+      <xs:enumeration value="REPORTS"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="PermitStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ISSUED"/>
+      <xs:enumeration value="FINALIZED"/>
+      <xs:enumeration value="EXPIRED"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="TaxRateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="TAX_PERCENT"/>
+      <xs:enumeration value="TAX_AMOUNT"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="TaxBillItemType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ASSESSMENT"/>
+      <xs:enumeration value="INTEREST"/>
+      <xs:enumeration value="CARRYOVER"/>
+      <xs:enumeration value="INTEREST_CREDIT"/>
+      <xs:enumeration value="AICA_CREDIT"/>
+      <xs:enumeration value="DELINQUENT_PENALTY"/>
+      <xs:enumeration value="COLLECTION_CHARGE"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="EscalatorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ESCALATE"/>
+      <xs:enumeration value="OVERRIDE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://services.smartmuni.com/soap/fault" xmlns="http://services.smartmuni.com/soap/fault" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ApiFaultInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidSmartObjectFault" nillable="true" type="ApiFaultInfo"/>
+  <xs:element name="InvalidIdFault" nillable="true" type="ApiFaultInfo"/>
+  <xs:element name="UnexpectedErrorFault" nillable="true" type="ApiFaultInfo"/>
+  <xs:element name="MalformedQueryFault" nillable="true" type="ApiFaultInfo"/>
+  <xs:element name="LoginFaultInfo" nillable="true" type="ApiFaultInfo"/>
+</xs:schema>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://services.smartmuni.com/soap" version="1.0" xmlns:ns1="http://services.smartmuni.com/soap/smartobject" xmlns:tns="http://services.smartmuni.com/soap" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:import namespace="http://services.smartmuni.com/soap/smartobject"/>
+<xs:element name="create" type="tns:create"/>
+<xs:element name="createResponse" type="tns:createResponse"/>
+<xs:element name="delete" type="tns:delete"/>
+<xs:element name="deleteResponse" type="tns:deleteResponse"/>
+<xs:element name="login" type="tns:login"/>
+<xs:element name="loginResponse" type="tns:loginResponse"/>
+<xs:element name="logout" type="tns:logout"/>
+<xs:element name="logoutResponse" type="tns:logoutResponse"/>
+<xs:element name="query" type="tns:query"/>
+<xs:element name="queryResponse" type="tns:queryResponse"/>
+<xs:element name="retrieve" type="tns:retrieve"/>
+<xs:element name="retrieveResponse" type="tns:retrieveResponse"/>
+<xs:element name="update" type="tns:update"/>
+<xs:element name="updateResponse" type="tns:updateResponse"/>
+<xs:complexType name="query">
+    <xs:sequence>
+      <xs:element name="queryString" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="queryResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:SmartObject"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="login">
+    <xs:sequence>
+      <xs:element name="username" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="loginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:loginResult"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="loginResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="metadataServerUrl" type="xs:string"/>
+      <xs:element minOccurs="0" name="passwordExpired" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="serverUrl" type="xs:string"/>
+      <xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="logout">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="logoutResponse">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="create">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="smartObjects" type="ns1:SmartObject"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="createResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:saveResult"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="saveResult">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="errors" nillable="true" type="tns:error"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element name="success" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="error">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fields" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="statusCode" type="tns:statusCode"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="delete">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="ids" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deleteResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:deleteResult"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="deleteResult">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="errors" nillable="true" type="tns:error"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element name="success" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="update">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="smartObjects" type="ns1:SmartObject"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="updateResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:saveResult"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="retrieve">
+    <xs:sequence>
+      <xs:element name="smartObjectType" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="ids" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="retrieveResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:SmartObject"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:simpleType name="statusCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ALL_OR_NONE_OPERATION_ROLLED_BACK"/>
+      <xs:enumeration value="ALREADY_IN_PROCESS"/>
+      <xs:enumeration value="CANNOT_REPARENT_RECORD"/>
+      <xs:enumeration value="CIRCULAR_DEPENDENCY"/>
+      <xs:enumeration value="DELETE_FAILED"/>
+      <xs:enumeration value="DELETE_OPERATION_TOO_LARGE"/>
+      <xs:enumeration value="DELETE_REQUIRED_ON_CASCADE"/>
+      <xs:enumeration value="DEPENDENCY_EXISTS"/>
+      <xs:enumeration value="DUPLICATE_EXTERNAL_ID"/>
+      <xs:enumeration value="DUPLICATE_VALUE"/>
+      <xs:enumeration value="ENTITY_IS_ARCHIVED"/>
+      <xs:enumeration value="ENTITY_IS_DELETED"/>
+      <xs:enumeration value="ENTITY_IS_LOCKED"/>
+      <xs:enumeration value="FIELD_INTEGRITY_EXCEPTION"/>
+      <xs:enumeration value="INVALID_ARGUMENT_TYPE"/>
+      <xs:enumeration value="INVALID_FIELD"/>
+      <xs:enumeration value="INVALID_ID_FIELD"/>
+      <xs:enumeration value="INVALID_OPERATION"/>
+      <xs:enumeration value="INVALID_SESSION_ID"/>
+      <xs:enumeration value="INVALID_STATUS"/>
+      <xs:enumeration value="INVALID_TYPE"/>
+      <xs:enumeration value="INVALID_TYPE_FOR_OPERATION"/>
+      <xs:enumeration value="LIMIT_EXCEEDED"/>
+      <xs:enumeration value="MALFORMED_ID"/>
+      <xs:enumeration value="MISSING_ARGUMENT"/>
+      <xs:enumeration value="NUMBER_OUTSIDE_VALID_RANGE"/>
+      <xs:enumeration value="QUERY_TIMEOUT"/>
+      <xs:enumeration value="REQUEST_RUNNING_TOO_LONG"/>
+      <xs:enumeration value="REQUIRED_FIELD_MISSING"/>
+      <xs:enumeration value="STRING_TOO_LONG"/>
+      <xs:enumeration value="UNDELETE_FAILED"/>
+      <xs:enumeration value="UNKNOWN_EXCEPTION"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="InvalidSmartObjectFault">
+    <wsdl:part element="ns1:InvalidSmartObjectFault" name="InvalidSmartObjectFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryResponse">
+    <wsdl:part element="tns:queryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveResponse">
+    <wsdl:part element="tns:retrieveResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="create">
+    <wsdl:part element="tns:create" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="update">
+    <wsdl:part element="tns:update" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidIdFault">
+    <wsdl:part element="ns1:InvalidIdFault" name="InvalidIdFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part element="tns:loginResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="query">
+    <wsdl:part element="tns:query" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="delete">
+    <wsdl:part element="tns:delete" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createResponse">
+    <wsdl:part element="tns:createResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnexpectedErrorFault">
+    <wsdl:part element="ns1:UnexpectedErrorFault" name="UnexpectedErrorFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="login">
+    <wsdl:part element="tns:login" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="LoginFault">
+    <wsdl:part element="ns1:LoginFaultInfo" name="LoginFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logoutResponse">
+    <wsdl:part element="tns:logoutResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteResponse">
+    <wsdl:part element="tns:deleteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logout">
+    <wsdl:part element="tns:logout" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MalformedQueryFault">
+    <wsdl:part element="ns1:MalformedQueryFault" name="MalformedQueryFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieve">
+    <wsdl:part element="tns:retrieve" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateResponse">
+    <wsdl:part element="tns:updateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SmartmuniService">
+    <wsdl:operation name="query">
+      <wsdl:input message="tns:query" name="query">
+    </wsdl:input>
+      <wsdl:output message="tns:queryResponse" name="queryResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MalformedQueryFault" name="MalformedQueryFault">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidIdFault" name="InvalidIdFault">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidSmartObjectFault" name="InvalidSmartObjectFault">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdl:input message="tns:login" name="login">
+    </wsdl:input>
+      <wsdl:output message="tns:loginResponse" name="loginResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:LoginFault" name="LoginFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <wsdl:input message="tns:logout" name="logout">
+    </wsdl:input>
+      <wsdl:output message="tns:logoutResponse" name="logoutResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="create">
+      <wsdl:input message="tns:create" name="create">
+    </wsdl:input>
+      <wsdl:output message="tns:createResponse" name="createResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidSmartObjectFault" name="InvalidSmartObjectFault">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdl:input message="tns:delete" name="delete">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteResponse" name="deleteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <wsdl:input message="tns:update" name="update">
+    </wsdl:input>
+      <wsdl:output message="tns:updateResponse" name="updateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidSmartObjectFault" name="InvalidSmartObjectFault">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve">
+      <wsdl:input message="tns:retrieve" name="retrieve">
+    </wsdl:input>
+      <wsdl:output message="tns:retrieveResponse" name="retrieveResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidIdFault" name="InvalidIdFault">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidSmartObjectFault" name="InvalidSmartObjectFault">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SmartmuniServiceSoapBinding" type="tns:SmartmuniService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="query">
+      <soap:operation soapAction="query" style="document"/>
+      <wsdl:input name="query">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MalformedQueryFault">
+        <soap:fault name="MalformedQueryFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidIdFault">
+        <soap:fault name="InvalidIdFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidSmartObjectFault">
+        <soap:fault name="InvalidSmartObjectFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <soap:operation soapAction="login" style="document"/>
+      <wsdl:input name="login">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LoginFault">
+        <soap:fault name="LoginFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <soap:operation soapAction="logout" style="document"/>
+      <wsdl:input name="logout">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="logoutResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="create">
+      <soap:operation soapAction="create" style="document"/>
+      <wsdl:input name="create">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidSmartObjectFault">
+        <soap:fault name="InvalidSmartObjectFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <soap:operation soapAction="delete" style="document"/>
+      <wsdl:input name="delete">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <soap:operation soapAction="update" style="document"/>
+      <wsdl:input name="update">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidSmartObjectFault">
+        <soap:fault name="InvalidSmartObjectFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="retrieve">
+      <soap:operation soapAction="retrieve" style="document"/>
+      <wsdl:input name="retrieve">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="retrieveResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidIdFault">
+        <soap:fault name="InvalidIdFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidSmartObjectFault">
+        <soap:fault name="InvalidSmartObjectFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SmartmuniService">
+    <wsdl:port binding="tns:SmartmuniServiceSoapBinding" name="Soap">
+      <soap:address location="http://localhost:8080/SmartmuniService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
