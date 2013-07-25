@@ -45,8 +45,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     Payment.class,
     Lien.class,
     OwnerParcel.class,
-    Button.class,
     UserRole.class,
+    Button.class,
     Fund.class,
     SmartObjectType.class,
     Project.class,
@@ -56,8 +56,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     Levy.class,
     SmartField.class,
     District.class,
-    Bond.class,
     Task.class,
+    Bond.class,
     Escalator.class,
     Agency.class,
     BondDebtSchedule.class,
@@ -76,8 +76,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     County.class,
     TaxBillItem.class,
     MaxTax.class,
-    RateAndMethodStep.class,
-    Parcel.class
+    Parcel.class,
+    RateAndMethodStep.class
 })
 public abstract class SmartObject
     extends SimpleObject

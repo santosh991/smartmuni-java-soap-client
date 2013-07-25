@@ -39,10 +39,10 @@ public interface SmartmuniService {
      * @param queryString
      * @return
      *     returns java.util.List<com.smartmuni.services.soap.smartobject.SmartObject>
+     * @throws InvalidIdFault
      * @throws UnexpectedErrorFault
      * @throws MalformedQueryFault
      * @throws InvalidSmartObjectFault
-     * @throws InvalidIdFault
      */
     @WebMethod(action = "query")
     @WebResult(targetNamespace = "")
@@ -144,9 +144,9 @@ public interface SmartmuniService {
      * @param smartObjectType
      * @return
      *     returns java.util.List<com.smartmuni.services.soap.smartobject.SmartObject>
+     * @throws InvalidIdFault
      * @throws UnexpectedErrorFault
      * @throws InvalidSmartObjectFault
-     * @throws InvalidIdFault
      */
     @WebMethod(action = "retrieve")
     @WebResult(targetNamespace = "")

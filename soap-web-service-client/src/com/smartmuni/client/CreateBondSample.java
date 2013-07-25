@@ -13,6 +13,7 @@ import javax.xml.datatype.DatatypeFactory;
 import com.smartmuni.services.soap.SaveResult;
 import com.smartmuni.services.soap.smartobject.Bond;
 import com.smartmuni.services.soap.smartobject.BondDebtSchedule;
+import com.smartmuni.services.soap.smartobject.BondType;
 import com.smartmuni.services.soap.smartobject.County;
 import com.smartmuni.services.soap.smartobject.Lien;
 import com.smartmuni.services.soap.smartobject.LienDebtSchedule;
@@ -110,26 +111,38 @@ public class CreateBondSample extends BaseSample {
 			bond = new Bond();
 			
 			// Set the bond name
-			bond.setName("130712-01-PB-05 (Test)");
+			bond.setName("130801-01-XX-05 (Test)");
 			
+			// Set the bond type
+			bond.setType(BondType.LIMITED_OBLIGATION_IMPROVEMENT_BOND);
+
 			// Set the bond issue date
-			calendar.setTime(dateFormat.parse("7/12/2013"));
+			calendar.setTime(dateFormat.parse("8/1/2013"));
 			bond.setDatedDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar));
-			
-			// Set the bond amount
-			bond.setAmount(new BigDecimal("125320.68"));
-			
+
+			// Set the bond coupon rate
+			bond.setCouponRate(new BigDecimal("0.0595"));
+
 			// Set the bond term
 			bond.setTerm(new BigDecimal("5"));
-			
+
+			// Set the bond project name
+			bond.setProjectName("Install new solar panals");
+
+			// Set the bond project amount
+			bond.setProjectAmount(new BigDecimal("12345.67"));
+
 			// Set the bond capitalized interest amount
 			bond.setCapitalizedInterestAmount(new BigDecimal("9878.33"));
 			
 			// Set the bond cost of issuance
 			bond.setCostOfIssuance(new BigDecimal("10576.74"));
-			
-			// Set the bond coupon rate
-			bond.setCouponRate(new BigDecimal("0.0595"));
+
+			// Set the bond early funding fee (interest)
+			bond.setEarlyFundingFee(new BigDecimal("123.45"));
+
+			// Set the bond par value (principal)
+			bond.setParValue(new BigDecimal("125320.68"));
 			
 			// Create a list of bonds objects to pass to the create method
 			ArrayList<SmartObject> bonds = new ArrayList<SmartObject>();

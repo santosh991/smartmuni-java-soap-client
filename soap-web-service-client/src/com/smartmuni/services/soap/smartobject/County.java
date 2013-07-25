@@ -16,7 +16,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://services.smartmuni.com/soap/smartobject}SmartObject">
  *       &lt;sequence>
- *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="fax" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="levyRounding" type="{http://services.smartmuni.com/soap/smartobject}LevyAmountRoundingType" minOccurs="0"/>
  *         &lt;element name="mailingAddress" type="{http://services.smartmuni.com/soap/smartobject}Address" minOccurs="0"/>
@@ -33,7 +32,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "County", propOrder = {
-    "description",
     "fax",
     "levyRounding",
     "mailingAddress",
@@ -45,37 +43,12 @@ public class County
     extends SmartObject
 {
 
-    protected String description;
     protected String fax;
     protected LevyAmountRoundingType levyRounding;
     protected Address mailingAddress;
     protected String phone;
     protected String taxParcelNumberFormat;
     protected String webSite;
-
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
 
     /**
      * Gets the value of the fax property.

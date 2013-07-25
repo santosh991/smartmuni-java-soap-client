@@ -51,7 +51,7 @@ public class RetrieveBondSample extends BaseSample {
 		try {
 
 			// Query for an existing bond
-			List<SmartObject> smartObjects = smartmuniService.query("Select bond From Bond bond Where (bond.name = '130531-01-PB-05')");
+			List<SmartObject> smartObjects = smartmuniService.query("Select bond From Bond bond Where (bond.name = '130801-01-XX-05 (Test)')");
 			
 			// If the bond was found then retrieve it from the list
 			if (smartObjects.size() > 0) {

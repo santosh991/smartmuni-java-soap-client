@@ -20,16 +20,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;extension base="{http://services.smartmuni.com/soap/smartobject}SmartObject">
  *       &lt;sequence>
- *         &lt;element name="amount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="CUSIP" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="capitalizedInterestAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="costOfIssuance" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="couponRate" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="datedDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="earlyFundingFee" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="firstCouponDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="maturityDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="outstandingPrincipalAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         &lt;element name="parValue" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         &lt;element name="projectAmount" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="projectName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="term" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="type" type="{http://services.smartmuni.com/soap/smartobject}BondType" minOccurs="0"/>
@@ -43,16 +44,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Bond", propOrder = {
-    "amount",
     "cusip",
     "capitalizedInterestAmount",
     "costOfIssuance",
     "couponRate",
     "datedDate",
     "description",
+    "earlyFundingFee",
     "firstCouponDate",
     "maturityDate",
-    "outstandingPrincipalAmount",
+    "parValue",
+    "projectAmount",
     "projectName",
     "term",
     "type"
@@ -61,7 +63,6 @@ public class Bond
     extends SmartObject
 {
 
-    protected BigDecimal amount;
     @XmlElement(name = "CUSIP")
     protected String cusip;
     protected BigDecimal capitalizedInterestAmount;
@@ -70,38 +71,16 @@ public class Bond
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar datedDate;
     protected String description;
+    protected BigDecimal earlyFundingFee;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar firstCouponDate;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar maturityDate;
-    protected BigDecimal outstandingPrincipalAmount;
+    protected BigDecimal parValue;
+    protected BigDecimal projectAmount;
     protected String projectName;
     protected BigDecimal term;
     protected BondType type;
-
-    /**
-     * Gets the value of the amount property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    /**
-     * Sets the value of the amount property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public void setAmount(BigDecimal value) {
-        this.amount = value;
-    }
 
     /**
      * Gets the value of the cusip property.
@@ -248,6 +227,30 @@ public class Bond
     }
 
     /**
+     * Gets the value of the earlyFundingFee property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public BigDecimal getEarlyFundingFee() {
+        return earlyFundingFee;
+    }
+
+    /**
+     * Sets the value of the earlyFundingFee property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public void setEarlyFundingFee(BigDecimal value) {
+        this.earlyFundingFee = value;
+    }
+
+    /**
      * Gets the value of the firstCouponDate property.
      * 
      * @return
@@ -296,27 +299,51 @@ public class Bond
     }
 
     /**
-     * Gets the value of the outstandingPrincipalAmount property.
+     * Gets the value of the parValue property.
      * 
      * @return
      *     possible object is
      *     {@link BigDecimal }
      *     
      */
-    public BigDecimal getOutstandingPrincipalAmount() {
-        return outstandingPrincipalAmount;
+    public BigDecimal getParValue() {
+        return parValue;
     }
 
     /**
-     * Sets the value of the outstandingPrincipalAmount property.
+     * Sets the value of the parValue property.
      * 
      * @param value
      *     allowed object is
      *     {@link BigDecimal }
      *     
      */
-    public void setOutstandingPrincipalAmount(BigDecimal value) {
-        this.outstandingPrincipalAmount = value;
+    public void setParValue(BigDecimal value) {
+        this.parValue = value;
+    }
+
+    /**
+     * Gets the value of the projectAmount property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public BigDecimal getProjectAmount() {
+        return projectAmount;
+    }
+
+    /**
+     * Sets the value of the projectAmount property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public void setProjectAmount(BigDecimal value) {
+        this.projectAmount = value;
     }
 
     /**

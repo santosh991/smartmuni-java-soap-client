@@ -78,19 +78,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Button }
-     * 
-     */
-    public Button createButton() {
-        return new Button();
-    }
-
-    /**
      * Create an instance of {@link UserRole }
      * 
      */
     public UserRole createUserRole() {
         return new UserRole();
+    }
+
+    /**
+     * Create an instance of {@link Button }
+     * 
+     */
+    public Button createButton() {
+        return new Button();
     }
 
     /**
@@ -166,19 +166,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Bond }
-     * 
-     */
-    public Bond createBond() {
-        return new Bond();
-    }
-
-    /**
      * Create an instance of {@link Task }
      * 
      */
     public Task createTask() {
         return new Task();
+    }
+
+    /**
+     * Create an instance of {@link Bond }
+     * 
+     */
+    public Bond createBond() {
+        return new Bond();
     }
 
     /**
@@ -262,19 +262,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TaxBill }
-     * 
-     */
-    public TaxBill createTaxBill() {
-        return new TaxBill();
-    }
-
-    /**
      * Create an instance of {@link SmartRelationship }
      * 
      */
     public SmartRelationship createSmartRelationship() {
         return new SmartRelationship();
+    }
+
+    /**
+     * Create an instance of {@link TaxBill }
+     * 
+     */
+    public TaxBill createTaxBill() {
+        return new TaxBill();
     }
 
     /**
@@ -326,19 +326,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TaxBillItem }
-     * 
-     */
-    public TaxBillItem createTaxBillItem() {
-        return new TaxBillItem();
-    }
-
-    /**
      * Create an instance of {@link SimpleObject }
      * 
      */
     public SimpleObject createSimpleObject() {
         return new SimpleObject();
+    }
+
+    /**
+     * Create an instance of {@link TaxBillItem }
+     * 
+     */
+    public TaxBillItem createTaxBillItem() {
+        return new TaxBillItem();
     }
 
     /**
@@ -358,19 +358,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RateAndMethodStep }
-     * 
-     */
-    public RateAndMethodStep createRateAndMethodStep() {
-        return new RateAndMethodStep();
-    }
-
-    /**
      * Create an instance of {@link Parcel }
      * 
      */
     public Parcel createParcel() {
         return new Parcel();
+    }
+
+    /**
+     * Create an instance of {@link RateAndMethodStep }
+     * 
+     */
+    public RateAndMethodStep createRateAndMethodStep() {
+        return new RateAndMethodStep();
     }
 
 }
