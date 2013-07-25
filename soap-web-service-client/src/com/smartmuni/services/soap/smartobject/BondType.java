@@ -17,12 +17,13 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="NINETEEN_ELEVIN_ACT"/>
  *     &lt;enumeration value="NINETEEN_FIFTEEN_ACT"/>
  *     &lt;enumeration value="BOND_ANTICIPATION_NOTE"/>
+ *     &lt;enumeration value="GENERAL_OBLIGATION"/>
  *     &lt;enumeration value="MARKS_ROOS"/>
  *     &lt;enumeration value="MELLO_ROOS"/>
  *     &lt;enumeration value="REVENUE"/>
  *     &lt;enumeration value="TAX_ALLOCATION_BOND"/>
- *     &lt;enumeration value="TAX_ALLOCATION_NOTE"/>
  *     &lt;enumeration value="TAX_REVENUE_ANTICIPATION_NOTE"/>
+ *     &lt;enumeration value="LIMITED_OBLIGATION_IMPROVEMENT_BOND"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -36,12 +37,13 @@ public enum BondType {
     NINETEEN_ELEVIN_ACT,
     NINETEEN_FIFTEEN_ACT,
     BOND_ANTICIPATION_NOTE,
+    GENERAL_OBLIGATION,
     MARKS_ROOS,
     MELLO_ROOS,
     REVENUE,
     TAX_ALLOCATION_BOND,
-    TAX_ALLOCATION_NOTE,
-    TAX_REVENUE_ANTICIPATION_NOTE;
+    TAX_REVENUE_ANTICIPATION_NOTE,
+    LIMITED_OBLIGATION_IMPROVEMENT_BOND;
 
     public String value() {
         return name();

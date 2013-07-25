@@ -65,8 +65,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     TaxRateArea.class,
     TaxRate.class,
     LevyPermit.class,
-    LevyClass.class,
     Opportunity.class,
+    LevyClass.class,
     LienDebtSchedule.class,
     TaxBill.class,
     Owner.class,
@@ -76,8 +76,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     County.class,
     TaxBillItem.class,
     MaxTax.class,
-    Parcel.class,
-    RateAndMethodStep.class
+    RateAndMethodStep.class,
+    Parcel.class
 })
 public abstract class SmartObject
     extends SimpleObject

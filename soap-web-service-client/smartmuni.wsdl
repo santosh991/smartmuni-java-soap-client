@@ -97,115 +97,19 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-<xs:complexType name="Task">
+<xs:complexType name="Payment">
     <xs:complexContent>
       <xs:extension base="tns:SmartObject">
         <xs:sequence>
-          <xs:element minOccurs="0" name="assignedTo" type="tns:User"/>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="district" type="tns:District"/>
-          <xs:element minOccurs="0" name="dueDate" type="xs:dateTime"/>
-          <xs:element minOccurs="0" name="priority" type="tns:TaskPriorityType"/>
-          <xs:element minOccurs="0" name="status" type="tns:TaskStatusType"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="User">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element name="active" type="xs:boolean"/>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="email" type="xs:string"/>
-          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
-          <xs:element minOccurs="0" name="lastAccess" type="xs:dateTime"/>
-          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
-          <xs:element minOccurs="0" name="mailingAddress" type="tns:Address"/>
-          <xs:element minOccurs="0" name="middleName" type="xs:string"/>
-          <xs:element minOccurs="0" name="phone" type="xs:string"/>
-          <xs:element minOccurs="0" name="profile" type="tns:Profile"/>
-          <xs:element minOccurs="0" name="userName" type="xs:string"/>
-          <xs:element minOccurs="0" name="userRole" type="tns:UserRole"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="Address">
-    <xs:complexContent>
-      <xs:extension base="tns:SimpleObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="city" type="xs:string"/>
-          <xs:element minOccurs="0" name="direction" type="xs:string"/>
-          <xs:element minOccurs="0" name="number" type="xs:string"/>
-          <xs:element minOccurs="0" name="state" type="xs:string"/>
-          <xs:element minOccurs="0" name="street" type="xs:string"/>
-          <xs:element minOccurs="0" name="suffix" type="xs:string"/>
-          <xs:element minOccurs="0" name="unit" type="xs:string"/>
-          <xs:element minOccurs="0" name="zipCode" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="Profile">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="UserRole">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="District">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="administrationAmount" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="administrationFeeType" type="tns:AdministrationFeeType"/>
-          <xs:element minOccurs="0" name="agency" type="tns:Agency"/>
-          <xs:element minOccurs="0" name="cutoffDate" type="xs:string"/>
-          <xs:element minOccurs="0" name="cutoffType" type="tns:CutoffType"/>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="checkNumber" type="xs:string"/>
           <xs:element minOccurs="0" name="description" type="xs:string"/>
           <xs:element minOccurs="0" name="fund" type="tns:Fund"/>
-          <xs:element minOccurs="0" name="maximumTaxRounding" type="tns:RoundingType"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="Agency">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="county" type="tns:County"/>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="fax" type="xs:string"/>
-          <xs:element minOccurs="0" name="mailingAddress" type="tns:Address"/>
-          <xs:element minOccurs="0" name="phone" type="xs:string"/>
-          <xs:element minOccurs="0" name="webSite" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="County">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="fax" type="xs:string"/>
-          <xs:element minOccurs="0" name="levyRounding" type="tns:LevyAmountRoundingType"/>
-          <xs:element minOccurs="0" name="mailingAddress" type="tns:Address"/>
-          <xs:element minOccurs="0" name="phone" type="xs:string"/>
-          <xs:element minOccurs="0" name="taxParcelNumberFormat" type="xs:string"/>
-          <xs:element minOccurs="0" name="webSite" type="xs:string"/>
+          <xs:element minOccurs="0" name="installment" type="tns:InstallmentType"/>
+          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
+          <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="taxBill" type="tns:TaxBill"/>
+          <xs:element minOccurs="0" name="type" type="tns:PaymentType"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -227,15 +131,222 @@
       <xs:extension base="tns:SmartObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="CUSIP" type="xs:string"/>
           <xs:element minOccurs="0" name="capitalizedInterestAmount" type="xs:decimal"/>
           <xs:element minOccurs="0" name="costOfIssuance" type="xs:decimal"/>
           <xs:element minOccurs="0" name="couponRate" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="datedDate" type="xs:dateTime"/>
           <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="issueDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="firstCouponDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="maturityDate" type="xs:dateTime"/>
           <xs:element minOccurs="0" name="outstandingPrincipalAmount" type="xs:decimal"/>
           <xs:element minOccurs="0" name="projectName" type="xs:string"/>
           <xs:element minOccurs="0" name="term" type="xs:decimal"/>
           <xs:element minOccurs="0" name="type" type="tns:BondType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="County">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="fax" type="xs:string"/>
+          <xs:element minOccurs="0" name="levyRounding" type="tns:LevyAmountRoundingType"/>
+          <xs:element minOccurs="0" name="mailingAddress" type="tns:Address"/>
+          <xs:element minOccurs="0" name="phone" type="xs:string"/>
+          <xs:element minOccurs="0" name="taxParcelNumberFormat" type="xs:string"/>
+          <xs:element minOccurs="0" name="webSite" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Address">
+    <xs:complexContent>
+      <xs:extension base="tns:SimpleObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="city" type="xs:string"/>
+          <xs:element minOccurs="0" name="direction" type="xs:string"/>
+          <xs:element minOccurs="0" name="number" type="xs:string"/>
+          <xs:element minOccurs="0" name="state" type="xs:string"/>
+          <xs:element minOccurs="0" name="street" type="xs:string"/>
+          <xs:element minOccurs="0" name="suffix" type="xs:string"/>
+          <xs:element minOccurs="0" name="unit" type="xs:string"/>
+          <xs:element minOccurs="0" name="zipCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Parcel">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="checkDigit" type="xs:string"/>
+          <xs:element minOccurs="0" name="county" type="tns:County"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="situsAddress" type="tns:Address"/>
+          <xs:element minOccurs="0" name="taxRateArea" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="TaxBill">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="billDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dueDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="fiscalYear" type="tns:FiscalYear"/>
+          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="payments" nillable="true" type="tns:Payment"/>
+          <xs:element minOccurs="0" name="status" type="tns:TaxBillStatusType"/>
+          <xs:element minOccurs="0" name="type" type="tns:TaxBillType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="FiscalYear">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="calendarYear" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Contract">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="agency" type="tns:Agency"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Agency">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="county" type="tns:County"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="fax" type="xs:string"/>
+          <xs:element minOccurs="0" name="mailingAddress" type="tns:Address"/>
+          <xs:element minOccurs="0" name="phone" type="xs:string"/>
+          <xs:element minOccurs="0" name="webSite" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="TaxBillItem">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="taxBill" type="tns:TaxBill"/>
+          <xs:element minOccurs="0" name="type" type="tns:TaxBillItemType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="RateAndMethodStep">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="tns:District"/>
+          <xs:element minOccurs="0" name="levyAmount" type="xs:decimal"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="taxRates" nillable="true" type="tns:TaxRate"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="District">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="administrationAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="administrationFeeType" type="tns:AdministrationFeeType"/>
+          <xs:element minOccurs="0" name="agency" type="tns:Agency"/>
+          <xs:element minOccurs="0" name="cutoffDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="cutoffType" type="tns:CutoffType"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="fund" type="tns:Fund"/>
+          <xs:element minOccurs="0" name="maximumTaxRounding" type="tns:RoundingType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="TaxRate">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="levyClass" type="tns:LevyClass"/>
+          <xs:element minOccurs="0" name="rateAndMethodStep" type="tns:RateAndMethodStep"/>
+          <xs:element minOccurs="0" name="taxRateType" type="tns:TaxRateType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="LevyClass">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="tns:District"/>
+          <xs:element minOccurs="0" name="expectedMaximumLevyRate" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="levyRate" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="rule" type="tns:Rule"/>
+          <xs:element minOccurs="0" name="taxLevyBasisType" type="tns:TaxLevyBasisType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Rule">
+    <xs:complexContent>
+      <xs:extension base="tns:SimpleObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="xml" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Opportunity">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="agency" type="tns:Agency"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="MaxTax">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="tns:District"/>
+          <xs:element minOccurs="0" name="fiscalYear" type="tns:FiscalYear"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="LevyPermit">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="applied" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="applyDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="levy" type="tns:Levy"/>
+          <xs:element minOccurs="0" name="permit" type="tns:Permit"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -258,16 +369,6 @@
           <xs:element minOccurs="0" name="reserveAmount" type="xs:decimal"/>
           <xs:element minOccurs="0" name="specialTaxRequirementAmount" type="xs:decimal"/>
           <xs:element minOccurs="0" name="statusType" type="tns:StatusType"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="FiscalYear">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="calendarYear" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -319,127 +420,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-<xs:complexType name="LevyClass">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="district" type="tns:District"/>
-          <xs:element minOccurs="0" name="expectedMaximumLevyRate" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="levyRate" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="rule" type="tns:Rule"/>
-          <xs:element minOccurs="0" name="taxLevyBasisType" type="tns:TaxLevyBasisType"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="Rule">
-    <xs:complexContent>
-      <xs:extension base="tns:SimpleObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="xml" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="Parcel">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="active" type="xs:boolean"/>
-          <xs:element minOccurs="0" name="checkDigit" type="xs:string"/>
-          <xs:element minOccurs="0" name="county" type="tns:County"/>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="situsAddress" type="tns:Address"/>
-          <xs:element minOccurs="0" name="taxRateArea" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="LienDebtSchedule">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="interestAmount" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="lien" type="tns:Lien"/>
-          <xs:element minOccurs="0" name="paymentAmount" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime"/>
-          <xs:element minOccurs="0" name="principalAmount" type="xs:decimal"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="Lien">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="bond" type="tns:Bond"/>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="district" type="tns:District"/>
-          <xs:element minOccurs="0" name="lienDate" type="xs:dateTime"/>
-          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
-          <xs:element minOccurs="0" name="rate" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="term" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="type" type="tns:LienType"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="TaxBill">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="billDate" type="xs:dateTime"/>
-          <xs:element minOccurs="0" name="dueDate" type="xs:dateTime"/>
-          <xs:element minOccurs="0" name="fiscalYear" type="tns:FiscalYear"/>
-          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="payments" nillable="true" type="tns:Payment"/>
-          <xs:element minOccurs="0" name="status" type="tns:TaxBillStatusType"/>
-          <xs:element minOccurs="0" name="type" type="tns:TaxBillType"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="Payment">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="checkNumber" type="xs:string"/>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="fund" type="tns:Fund"/>
-          <xs:element minOccurs="0" name="installment" type="tns:InstallmentType"/>
-          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
-          <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime"/>
-          <xs:element minOccurs="0" name="taxBill" type="tns:TaxBill"/>
-          <xs:element minOccurs="0" name="type" type="tns:PaymentType"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="Report">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="body" type="xs:base64Binary"/>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="folder" type="tns:Folder"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="Folder">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="type" type="tns:FolderType"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
 <xs:complexType name="Permit">
     <xs:complexContent>
       <xs:extension base="tns:SmartObject">
@@ -478,70 +458,41 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-<xs:complexType name="LevyPermit">
+<xs:complexType name="Project">
     <xs:complexContent>
       <xs:extension base="tns:SmartObject">
         <xs:sequence>
-          <xs:element minOccurs="0" name="applied" type="xs:boolean"/>
-          <xs:element minOccurs="0" name="applyDate" type="xs:dateTime"/>
-          <xs:element minOccurs="0" name="levy" type="tns:Levy"/>
-          <xs:element minOccurs="0" name="permit" type="tns:Permit"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-<xs:complexType name="Contract">
+<xs:complexType name="UserRole">
     <xs:complexContent>
       <xs:extension base="tns:SmartObject">
         <xs:sequence>
-          <xs:element minOccurs="0" name="agency" type="tns:Agency"/>
           <xs:element minOccurs="0" name="description" type="xs:string"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-<xs:complexType name="TaxRate">
+<xs:complexType name="Report">
     <xs:complexContent>
       <xs:extension base="tns:SmartObject">
         <xs:sequence>
-          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="body" type="xs:base64Binary"/>
           <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="levyClass" type="tns:LevyClass"/>
-          <xs:element minOccurs="0" name="rateAndMethodStep" type="tns:RateAndMethodStep"/>
-          <xs:element minOccurs="0" name="taxRateType" type="tns:TaxRateType"/>
+          <xs:element minOccurs="0" name="folder" type="tns:Folder"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-<xs:complexType name="RateAndMethodStep">
+<xs:complexType name="Folder">
     <xs:complexContent>
       <xs:extension base="tns:SmartObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="district" type="tns:District"/>
-          <xs:element minOccurs="0" name="levyAmount" type="xs:decimal"/>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="taxRates" nillable="true" type="tns:TaxRate"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="TaxBillItem">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="taxBill" type="tns:TaxBill"/>
-          <xs:element minOccurs="0" name="type" type="tns:TaxBillItemType"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="Opportunity">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="agency" type="tns:Agency"/>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="type" type="tns:FolderType"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -571,6 +522,79 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+<xs:complexType name="LienDebtSchedule">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="interestAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="lien" type="tns:Lien"/>
+          <xs:element minOccurs="0" name="paymentAmount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="principalAmount" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Lien">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="bond" type="tns:Bond"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="tns:District"/>
+          <xs:element minOccurs="0" name="lienDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="parcel" type="tns:Parcel"/>
+          <xs:element minOccurs="0" name="rate" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="term" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="type" type="tns:LienType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Profile">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="User">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element name="active" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="lastAccess" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="mailingAddress" type="tns:Address"/>
+          <xs:element minOccurs="0" name="middleName" type="xs:string"/>
+          <xs:element minOccurs="0" name="phone" type="xs:string"/>
+          <xs:element minOccurs="0" name="profile" type="tns:Profile"/>
+          <xs:element minOccurs="0" name="userName" type="xs:string"/>
+          <xs:element minOccurs="0" name="userRole" type="tns:UserRole"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="Task">
+    <xs:complexContent>
+      <xs:extension base="tns:SmartObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="assignedTo" type="tns:User"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="district" type="tns:District"/>
+          <xs:element minOccurs="0" name="dueDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="priority" type="tns:TaskPriorityType"/>
+          <xs:element minOccurs="0" name="status" type="tns:TaskStatusType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 <xs:complexType name="BondDebtSchedule">
     <xs:complexContent>
       <xs:extension base="tns:SmartObject">
@@ -584,7 +608,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-<xs:complexType name="Project">
+<xs:complexType name="TaxRateArea">
     <xs:complexContent>
       <xs:extension base="tns:SmartObject">
         <xs:sequence>
@@ -614,27 +638,6 @@
           <xs:element minOccurs="0" name="suffix" type="xs:string"/>
           <xs:element minOccurs="0" name="title" type="xs:string"/>
           <xs:element minOccurs="0" name="webSite" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="TaxRateArea">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-<xs:complexType name="MaxTax">
-    <xs:complexContent>
-      <xs:extension base="tns:SmartObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
-          <xs:element minOccurs="0" name="description" type="xs:string"/>
-          <xs:element minOccurs="0" name="district" type="tns:District"/>
-          <xs:element minOccurs="0" name="fiscalYear" type="tns:FiscalYear"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -679,11 +682,19 @@
       <xs:enumeration value="ObjectType"/>
     </xs:restriction>
   </xs:simpleType>
-<xs:simpleType name="AdministrationFeeType">
+<xs:simpleType name="BondType">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="FIXED"/>
-      <xs:enumeration value="PERCENT"/>
+      <xs:enumeration value="UNDETERMINED"/>
+      <xs:enumeration value="NINETEEN_ELEVIN_ACT"/>
+      <xs:enumeration value="NINETEEN_FIFTEEN_ACT"/>
+      <xs:enumeration value="BOND_ANTICIPATION_NOTE"/>
+      <xs:enumeration value="GENERAL_OBLIGATION"/>
+      <xs:enumeration value="MARKS_ROOS"/>
+      <xs:enumeration value="MELLO_ROOS"/>
+      <xs:enumeration value="REVENUE"/>
+      <xs:enumeration value="TAX_ALLOCATION_BOND"/>
+      <xs:enumeration value="TAX_REVENUE_ANTICIPATION_NOTE"/>
+      <xs:enumeration value="LIMITED_OBLIGATION_IMPROVEMENT_BOND"/>
     </xs:restriction>
   </xs:simpleType>
 <xs:simpleType name="LevyAmountRoundingType">
@@ -691,27 +702,6 @@
       <xs:enumeration value="NONE"/>
       <xs:enumeration value="ROUND_EVEN_PENNY"/>
       <xs:enumeration value="ROUND_WHOLE_DOLLAR"/>
-    </xs:restriction>
-  </xs:simpleType>
-<xs:simpleType name="CutoffType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="PERMIT_DATE"/>
-      <xs:enumeration value="CO_DATE"/>
-    </xs:restriction>
-  </xs:simpleType>
-<xs:simpleType name="BondType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="UNDETERMINED"/>
-      <xs:enumeration value="NINETEEN_ELEVIN_ACT"/>
-      <xs:enumeration value="NINETEEN_FIFTEEN_ACT"/>
-      <xs:enumeration value="BOND_ANTICIPATION_NOTE"/>
-      <xs:enumeration value="MARKS_ROOS"/>
-      <xs:enumeration value="MELLO_ROOS"/>
-      <xs:enumeration value="REVENUE"/>
-      <xs:enumeration value="TAX_ALLOCATION_BOND"/>
-      <xs:enumeration value="TAX_ALLOCATION_NOTE"/>
-      <xs:enumeration value="TAX_REVENUE_ANTICIPATION_NOTE"/>
     </xs:restriction>
   </xs:simpleType>
 <xs:simpleType name="FundType">
@@ -722,66 +712,15 @@
       <xs:enumeration value="OPERATIONS_AND_MAINTENANCE_FUND"/>
       <xs:enumeration value="RENEWAL_AND_REPLACEMENT_FUND"/>
       <xs:enumeration value="RESERVE_MAINTENANCE_FUND"/>
-      <xs:enumeration value="RESERVE_FUND"/>
       <xs:enumeration value="SINKING_FUND"/>
       <xs:enumeration value="SURPLUS_FUND"/>
-    </xs:restriction>
-  </xs:simpleType>
-<xs:simpleType name="RoundingType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="ROUND_UP"/>
-      <xs:enumeration value="ROUND_DOWN"/>
-    </xs:restriction>
-  </xs:simpleType>
-<xs:simpleType name="TaskPriorityType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="LOW"/>
-      <xs:enumeration value="NORMAL"/>
-      <xs:enumeration value="HIGH"/>
-    </xs:restriction>
-  </xs:simpleType>
-<xs:simpleType name="TaskStatusType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NOT_STARTED"/>
-      <xs:enumeration value="IN_PROGRESS"/>
-      <xs:enumeration value="COMPLETE"/>
-      <xs:enumeration value="WAITING"/>
-      <xs:enumeration value="DEFERRED"/>
-    </xs:restriction>
-  </xs:simpleType>
-<xs:simpleType name="TaxLevyBasisType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="BUILDING_SQ_FEET"/>
-      <xs:enumeration value="NUMBER_OF_UNITS"/>
-      <xs:enumeration value="TAXABLE_ACRES"/>
-      <xs:enumeration value="PER_PARCEL"/>
-    </xs:restriction>
-  </xs:simpleType>
-<xs:simpleType name="StatusType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="TESTING"/>
-      <xs:enumeration value="IN_PROGRESS"/>
-      <xs:enumeration value="FINALIZED"/>
-      <xs:enumeration value="SUBMITTED"/>
-    </xs:restriction>
-  </xs:simpleType>
-<xs:simpleType name="LienType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="SPECIAL_ASSESSMENT_LIEN"/>
-      <xs:enumeration value="TAX_LIEN"/>
+      <xs:enumeration value="CAPITALIZED_INTEREST_FUND"/>
     </xs:restriction>
   </xs:simpleType>
 <xs:simpleType name="InstallmentType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="FIRST"/>
       <xs:enumeration value="SECOND"/>
-    </xs:restriction>
-  </xs:simpleType>
-<xs:simpleType name="PaymentType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="REGULAR"/>
-      <xs:enumeration value="TAXSALE"/>
     </xs:restriction>
   </xs:simpleType>
 <xs:simpleType name="TaxBillStatusType">
@@ -802,25 +741,10 @@
       <xs:enumeration value="UNSECURED_SUPPLEMENTAL"/>
     </xs:restriction>
   </xs:simpleType>
-<xs:simpleType name="FolderType">
+<xs:simpleType name="PaymentType">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="DOCUMENTS"/>
-      <xs:enumeration value="EMAIL_TEMPLATES"/>
-      <xs:enumeration value="REPORTS"/>
-    </xs:restriction>
-  </xs:simpleType>
-<xs:simpleType name="PermitStatusType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="ISSUED"/>
-      <xs:enumeration value="FINALIZED"/>
-      <xs:enumeration value="EXPIRED"/>
-    </xs:restriction>
-  </xs:simpleType>
-<xs:simpleType name="TaxRateType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NONE"/>
-      <xs:enumeration value="TAX_PERCENT"/>
-      <xs:enumeration value="TAX_AMOUNT"/>
+      <xs:enumeration value="REGULAR"/>
+      <xs:enumeration value="TAXSALE"/>
     </xs:restriction>
   </xs:simpleType>
 <xs:simpleType name="TaxBillItemType">
@@ -834,10 +758,90 @@
       <xs:enumeration value="COLLECTION_CHARGE"/>
     </xs:restriction>
   </xs:simpleType>
+<xs:simpleType name="AdministrationFeeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="FIXED"/>
+      <xs:enumeration value="PERCENT"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="CutoffType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="PERMIT_DATE"/>
+      <xs:enumeration value="CO_DATE"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="RoundingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="ROUND_UP"/>
+      <xs:enumeration value="ROUND_DOWN"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="TaxLevyBasisType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BUILDING_SQ_FEET"/>
+      <xs:enumeration value="NUMBER_OF_UNITS"/>
+      <xs:enumeration value="TAXABLE_ACRES"/>
+      <xs:enumeration value="PER_PARCEL"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="TaxRateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="TAX_PERCENT"/>
+      <xs:enumeration value="TAX_AMOUNT"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="StatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TESTING"/>
+      <xs:enumeration value="IN_PROGRESS"/>
+      <xs:enumeration value="FINALIZED"/>
+      <xs:enumeration value="SUBMITTED"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="PermitStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ISSUED"/>
+      <xs:enumeration value="FINALIZED"/>
+      <xs:enumeration value="EXPIRED"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="FolderType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DOCUMENTS"/>
+      <xs:enumeration value="EMAIL_TEMPLATES"/>
+      <xs:enumeration value="REPORTS"/>
+    </xs:restriction>
+  </xs:simpleType>
 <xs:simpleType name="EscalatorType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="ESCALATE"/>
       <xs:enumeration value="OVERRIDE"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="LienType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SPECIAL_ASSESSMENT_LIEN"/>
+      <xs:enumeration value="TAX_LIEN"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="TaskPriorityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LOW"/>
+      <xs:enumeration value="NORMAL"/>
+      <xs:enumeration value="HIGH"/>
+    </xs:restriction>
+  </xs:simpleType>
+<xs:simpleType name="TaskStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOT_STARTED"/>
+      <xs:enumeration value="IN_PROGRESS"/>
+      <xs:enumeration value="COMPLETE"/>
+      <xs:enumeration value="WAITING"/>
+      <xs:enumeration value="DEFERRED"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
@@ -1263,7 +1267,7 @@
   </wsdl:binding>
   <wsdl:service name="SmartmuniService">
     <wsdl:port binding="tns:SmartmuniServiceSoapBinding" name="Soap">
-      <soap:address location="http://localhost:8080/SmartmuniService"/>
+      <soap:address location="http://localhost:80/SmartmuniService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

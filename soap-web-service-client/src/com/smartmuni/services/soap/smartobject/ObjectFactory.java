@@ -238,19 +238,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LevyClass }
-     * 
-     */
-    public LevyClass createLevyClass() {
-        return new LevyClass();
-    }
-
-    /**
      * Create an instance of {@link Opportunity }
      * 
      */
     public Opportunity createOpportunity() {
         return new Opportunity();
+    }
+
+    /**
+     * Create an instance of {@link LevyClass }
+     * 
+     */
+    public LevyClass createLevyClass() {
+        return new LevyClass();
     }
 
     /**
@@ -262,19 +262,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SmartRelationship }
-     * 
-     */
-    public SmartRelationship createSmartRelationship() {
-        return new SmartRelationship();
-    }
-
-    /**
      * Create an instance of {@link TaxBill }
      * 
      */
     public TaxBill createTaxBill() {
         return new TaxBill();
+    }
+
+    /**
+     * Create an instance of {@link SmartRelationship }
+     * 
+     */
+    public SmartRelationship createSmartRelationship() {
+        return new SmartRelationship();
     }
 
     /**
@@ -326,19 +326,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SimpleObject }
-     * 
-     */
-    public SimpleObject createSimpleObject() {
-        return new SimpleObject();
-    }
-
-    /**
      * Create an instance of {@link TaxBillItem }
      * 
      */
     public TaxBillItem createTaxBillItem() {
         return new TaxBillItem();
+    }
+
+    /**
+     * Create an instance of {@link SimpleObject }
+     * 
+     */
+    public SimpleObject createSimpleObject() {
+        return new SimpleObject();
     }
 
     /**
@@ -358,19 +358,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Parcel }
-     * 
-     */
-    public Parcel createParcel() {
-        return new Parcel();
-    }
-
-    /**
      * Create an instance of {@link RateAndMethodStep }
      * 
      */
     public RateAndMethodStep createRateAndMethodStep() {
         return new RateAndMethodStep();
+    }
+
+    /**
+     * Create an instance of {@link Parcel }
+     * 
+     */
+    public Parcel createParcel() {
+        return new Parcel();
     }
 
 }

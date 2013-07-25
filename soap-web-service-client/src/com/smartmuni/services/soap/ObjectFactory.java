@@ -30,14 +30,14 @@ public class ObjectFactory {
     private final static QName _Update_QNAME = new QName("http://services.smartmuni.com/soap", "update");
     private final static QName _LoginResponse_QNAME = new QName("http://services.smartmuni.com/soap", "loginResponse");
     private final static QName _Query_QNAME = new QName("http://services.smartmuni.com/soap", "query");
-    private final static QName _Delete_QNAME = new QName("http://services.smartmuni.com/soap", "delete");
     private final static QName _CreateResponse_QNAME = new QName("http://services.smartmuni.com/soap", "createResponse");
+    private final static QName _Delete_QNAME = new QName("http://services.smartmuni.com/soap", "delete");
     private final static QName _Login_QNAME = new QName("http://services.smartmuni.com/soap", "login");
     private final static QName _LogoutResponse_QNAME = new QName("http://services.smartmuni.com/soap", "logoutResponse");
     private final static QName _DeleteResponse_QNAME = new QName("http://services.smartmuni.com/soap", "deleteResponse");
     private final static QName _Logout_QNAME = new QName("http://services.smartmuni.com/soap", "logout");
-    private final static QName _Retrieve_QNAME = new QName("http://services.smartmuni.com/soap", "retrieve");
     private final static QName _UpdateResponse_QNAME = new QName("http://services.smartmuni.com/soap", "updateResponse");
+    private final static QName _Retrieve_QNAME = new QName("http://services.smartmuni.com/soap", "retrieve");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.smartmuni.services.soap
@@ -245,21 +245,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Delete }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.smartmuni.com/soap", name = "delete")
-    public JAXBElement<Delete> createDelete(Delete value) {
-        return new JAXBElement<Delete>(_Delete_QNAME, Delete.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CreateResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://services.smartmuni.com/soap", name = "createResponse")
     public JAXBElement<CreateResponse> createCreateResponse(CreateResponse value) {
         return new JAXBElement<CreateResponse>(_CreateResponse_QNAME, CreateResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Delete }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.smartmuni.com/soap", name = "delete")
+    public JAXBElement<Delete> createDelete(Delete value) {
+        return new JAXBElement<Delete>(_Delete_QNAME, Delete.class, null, value);
     }
 
     /**
@@ -299,21 +299,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Retrieve }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.smartmuni.com/soap", name = "retrieve")
-    public JAXBElement<Retrieve> createRetrieve(Retrieve value) {
-        return new JAXBElement<Retrieve>(_Retrieve_QNAME, Retrieve.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link UpdateResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://services.smartmuni.com/soap", name = "updateResponse")
     public JAXBElement<UpdateResponse> createUpdateResponse(UpdateResponse value) {
         return new JAXBElement<UpdateResponse>(_UpdateResponse_QNAME, UpdateResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Retrieve }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.smartmuni.com/soap", name = "retrieve")
+    public JAXBElement<Retrieve> createRetrieve(Retrieve value) {
+        return new JAXBElement<Retrieve>(_Retrieve_QNAME, Retrieve.class, null, value);
     }
 
 }

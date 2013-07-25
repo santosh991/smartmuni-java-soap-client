@@ -1,3 +1,1 @@
-wsimport -Xnocompile -s /Users/timsent/Documents/workspace/soap-web-service-client/src/ /Users/timsent/Documents/workspace/soap-web-service-client/smartmuni.wsdl
-
--b /Users/timsent/Documents/workspace/smartmuni-wsclient/binding.xml 
+wsimport -Xnocompile -s /Users/timsent/git/smartmuni-java-soap-client/soap-web-service-client/src/ /Users/timsent/git/smartmuni-java-soap-client/soap-web-service-client/smartmuni.wsdl

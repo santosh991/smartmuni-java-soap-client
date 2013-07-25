@@ -2,6 +2,7 @@
 package com.smartmuni.services.soap;
 
 import java.util.List;
+
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -39,8 +40,8 @@ public interface SmartmuniService {
      * @return
      *     returns java.util.List<com.smartmuni.services.soap.smartobject.SmartObject>
      * @throws UnexpectedErrorFault
-     * @throws InvalidSmartObjectFault
      * @throws MalformedQueryFault
+     * @throws InvalidSmartObjectFault
      * @throws InvalidIdFault
      */
     @WebMethod(action = "query")

@@ -114,7 +114,7 @@ public class CreateBondSample extends BaseSample {
 			
 			// Set the bond issue date
 			calendar.setTime(dateFormat.parse("7/12/2013"));
-			bond.setIssueDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar));
+			bond.setDatedDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar));
 			
 			// Set the bond amount
 			bond.setAmount(new BigDecimal("125320.68"));

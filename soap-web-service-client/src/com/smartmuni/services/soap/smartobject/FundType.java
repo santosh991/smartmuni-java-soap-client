@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="OPERATIONS_AND_MAINTENANCE_FUND"/>
  *     &lt;enumeration value="RENEWAL_AND_REPLACEMENT_FUND"/>
  *     &lt;enumeration value="RESERVE_MAINTENANCE_FUND"/>
- *     &lt;enumeration value="RESERVE_FUND"/>
  *     &lt;enumeration value="SINKING_FUND"/>
  *     &lt;enumeration value="SURPLUS_FUND"/>
+ *     &lt;enumeration value="CAPITALIZED_INTEREST_FUND"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -37,9 +37,9 @@ public enum FundType {
     OPERATIONS_AND_MAINTENANCE_FUND,
     RENEWAL_AND_REPLACEMENT_FUND,
     RESERVE_MAINTENANCE_FUND,
-    RESERVE_FUND,
     SINKING_FUND,
-    SURPLUS_FUND;
+    SURPLUS_FUND,
+    CAPITALIZED_INTEREST_FUND;
 
     public String value() {
         return name();
