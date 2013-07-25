@@ -1267,7 +1267,7 @@
   </wsdl:binding>
   <wsdl:service name="SmartmuniService">
     <wsdl:port binding="tns:SmartmuniServiceSoapBinding" name="Soap">
-      <soap:address location="http://localhost:80/SmartmuniService"/>
+      <soap:address location="http://services.smartmuni.com/SmartmuniService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
